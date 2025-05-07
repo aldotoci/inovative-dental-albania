@@ -5,6 +5,21 @@ let consentState = {
     necessary: true // Always true as these are essential cookies
 };
 
+// Function to load Google tag
+function loadGoogleTag() {
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-69M504H7QT';
+    document.head.appendChild(gtagScript);
+
+    gtag('js', new Date());
+    gtag('config', 'G-69M504H7QT', {
+        'anonymize_ip': true,
+        'cookie_domain': 'auto',
+        'cookie_flags': 'SameSite=None;Secure'
+    });
+}
+
 // Function to show the consent banner
 function showConsentBanner() {
     const banner = document.getElementById('consent-banner');
@@ -62,24 +77,16 @@ function acceptAll() {
 function updateConsentState() {
     // Update Google Analytics consent mode
     gtag('consent', 'update', {
-        'analytics_storage': consentState.analytics ? 'granted' : 'denied',
-        'ad_storage': consentState.marketing ? 'granted' : 'denied'
+        'ad_user_data': consentState.marketing ? 'granted' : 'denied',
+        'ad_personalization': consentState.marketing ? 'granted' : 'denied',
+        'ad_storage': consentState.marketing ? 'granted' : 'denied',
+        'analytics_storage': consentState.analytics ? 'granted' : 'denied'
     });
 
-    // If analytics is granted, initialize Google Analytics
+    // If analytics is granted, load Google tag
     if (consentState.analytics) {
-        initializeGoogleAnalytics();
+        loadGoogleTag();
     }
-}
-
-// Function to initialize Google Analytics
-function initializeGoogleAnalytics() {
-    // Google Analytics is already initialized in the head, but we can add additional configuration here
-    gtag('config', 'G-69M504H7QT', {
-        'anonymize_ip': true,
-        'cookie_domain': 'auto',
-        'cookie_flags': 'SameSite=None;Secure'
-    });
 }
 
 // Load saved preferences on page load
