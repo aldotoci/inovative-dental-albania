@@ -7,7 +7,9 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-69M504H7QT');
+    gtag('config', 'G-69M504H7QT', {
+        'consent_mode': 'denied'
+    });
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +51,7 @@
     
     <!-- Existing CSS and Font Links -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="consent-banner.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -569,6 +572,54 @@
         </div>
     </footer>
 
+    <!-- Consent Banner -->
+    <div id="consent-banner" class="consent-banner">
+        <div class="consent-content">
+            <div class="consent-text">
+                <p>Ne përdorim cookies për të përmirësuar eksperiencën tuaj të shfletimit, për të ofruar përmbajtje të personalizuar dhe për të analizuar trafikun tonë. Duke klikuar "Prano të Gjitha", ju jepni pëlqimin për përdorimin tonë të cookies. Lexoni <a href="/privacy-policy" target="_blank">Politikën tonë të Privatësisë</a> për më shumë informacion.</p>
+            </div>
+            <div class="consent-buttons">
+                <button class="consent-btn accept-all" onclick="acceptAll()">Prano të Gjitha</button>
+                <button class="consent-btn manage-preferences" onclick="showPreferences()">Menaxho Preferencat</button>
+            </div>
+        </div>
+        <div id="consent-preferences" class="consent-preferences">
+            <div class="preference-item">
+                <label>
+                    <span>Cookies të Nevojshme</span>
+                    <span class="switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider"></span>
+                    </span>
+                </label>
+                <p>Nevojshme për funksionimin e duhur të faqes. Nuk mund të çaktivizohen.</p>
+            </div>
+            <div class="preference-item">
+                <label>
+                    <span>Cookies Analitike</span>
+                    <span class="switch">
+                        <input type="checkbox" id="analytics-consent">
+                        <span class="slider"></span>
+                    </span>
+                </label>
+                <p>Na ndihmojnë të kuptojmë se si vizitorët ndërveprojnë me faqen tonë.</p>
+            </div>
+            <div class="preference-item">
+                <label>
+                    <span>Cookies Marketing</span>
+                    <span class="switch">
+                        <input type="checkbox" id="marketing-consent">
+                        <span class="slider"></span>
+                    </span>
+                </label>
+                <p>Përdoren për të gjurmuar vizitorët nëpër faqet për qëllime marketingu.</p>
+            </div>
+            <button class="consent-btn save-preferences" onclick="savePreferences()">Ruaj Preferencat</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
+    <script src="consent-banner.js"></script>
 </body>
 </html> 

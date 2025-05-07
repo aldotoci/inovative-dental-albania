@@ -7,7 +7,9 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
     
-      gtag('config', 'G-69M504H7QT');
+      gtag('config', 'G-69M504H7QT', {
+          'consent_mode': 'denied'
+      });
     </script>
 
     <meta charset="UTF-8">
@@ -50,6 +52,7 @@
     
     <!-- Existing CSS and Font Links -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="consent-banner.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -571,6 +574,54 @@
         </div>
     </footer>
 
+    <!-- Consent Banner -->
+    <div id="consent-banner" class="consent-banner">
+        <div class="consent-content">
+            <div class="consent-text">
+                <p>We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. Read our <a href="/privacy-policy" target="_blank">Privacy Policy</a> for more information.</p>
+            </div>
+            <div class="consent-buttons">
+                <button class="consent-btn accept-all" onclick="acceptAll()">Accept All</button>
+                <button class="consent-btn manage-preferences" onclick="showPreferences()">Manage Preferences</button>
+            </div>
+        </div>
+        <div id="consent-preferences" class="consent-preferences">
+            <div class="preference-item">
+                <label>
+                    <span>Necessary Cookies</span>
+                    <span class="switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider"></span>
+                    </span>
+                </label>
+                <p>Required for the website to function properly. Cannot be disabled.</p>
+            </div>
+            <div class="preference-item">
+                <label>
+                    <span>Analytics Cookies</span>
+                    <span class="switch">
+                        <input type="checkbox" id="analytics-consent">
+                        <span class="slider"></span>
+                    </span>
+                </label>
+                <p>Help us understand how visitors interact with our website.</p>
+            </div>
+            <div class="preference-item">
+                <label>
+                    <span>Marketing Cookies</span>
+                    <span class="switch">
+                        <input type="checkbox" id="marketing-consent">
+                        <span class="slider"></span>
+                    </span>
+                </label>
+                <p>Used to track visitors across websites for marketing purposes.</p>
+            </div>
+            <button class="consent-btn save-preferences" onclick="savePreferences()">Save Preferences</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
+    <script src="consent-banner.js"></script>
 </body>
 </html>
