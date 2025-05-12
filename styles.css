@@ -203,23 +203,52 @@ nav {
 }
 
 .social-icon {
-    color: #1a8e9b;
+    color: #0056b3; /* Darker blue for better contrast */
     font-size: 1.1rem;
     transition: all 0.3s ease;
     text-decoration: none;
-    width: 32px;
-    height: 32px;
+    width: 44px; /* WCAG touch target minimum */
+    height: 44px; /* WCAG touch target minimum */
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    border: 1px solid #1a8e9b;
+    border: 2px solid #0056b3;
+    background-color: #ffffff;
 }
 
 .social-icon:hover {
-    background-color: #1a8e9b;
-    color: #fff;
+    background-color: #0056b3;
+    color: #ffffff;
     transform: translateY(-3px);
+}
+
+/* Specific colors for each social platform */
+.social-icon .fa-whatsapp {
+    color: inherit;
+}
+
+.social-icon .fa-facebook-f {
+    color: inherit;
+}
+
+.social-icon .fa-instagram {
+    color: inherit;
+}
+
+/* Focus styles for keyboard navigation */
+.social-icon:focus {
+    outline: 3px solid #0056b3;
+    outline-offset: 2px;
+}
+
+.social-icon:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.social-icon:focus-visible {
+    outline: 3px solid #0056b3;
+    outline-offset: 2px;
 }
 
 .btn-primary {
