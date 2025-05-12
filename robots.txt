@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://idt.al/sitemap.xml 
+Sitemap: https://idt.al/sitemap.xml
