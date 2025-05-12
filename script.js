@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     nav.insertBefore(mobileMenuBtn, navLinks);
     
     mobileMenuBtn.addEventListener('click', function() {
-        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !isExpanded);
+        navLinks.classList.toggle('active');
     });
     
     // Smooth scrolling for navigation links

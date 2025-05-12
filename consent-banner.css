@@ -31,6 +31,19 @@
     line-height: 1.5;
 }
 
+.consent-text p {
+    color: #333333;
+}
+
+.consent-text a {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.consent-text a:hover {
+    color: #004494;
+}
+
 .consent-buttons {
     display: flex;
     gap: 10px;
@@ -38,32 +51,45 @@
 }
 
 .consent-btn {
-    padding: 10px 20px;
+    padding: 12px 24px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    font-weight: 600;
     cursor: pointer;
-    font-weight: 500;
     transition: all 0.3s ease;
     font-size: 14px;
 }
 
-.accept-all {
-    background: #007bff;
-    color: white;
+.consent-btn.accept-all {
+    background-color: #0056b3;
+    color: #ffffff;
 }
 
-.accept-all:hover {
-    background: #0056b3;
+.consent-btn.accept-all:hover {
+    background-color: #004494;
+    color: #ffffff;
 }
 
-.manage-preferences {
-    background: #f8f9fa;
-    color: #333;
-    border: 1px solid #ddd;
+.consent-btn.manage-preferences {
+    background-color: #f8f9fa;
+    color: #0056b3;
+    border: 2px solid #0056b3;
 }
 
-.manage-preferences:hover {
-    background: #e9ecef;
+.consent-btn.manage-preferences:hover {
+    background-color: #e9ecef;
+    color: #004494;
+}
+
+.consent-btn.save-preferences {
+    background-color: #0056b3;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.consent-btn.save-preferences:hover {
+    background-color: #004494;
+    color: #ffffff;
 }
 
 .consent-preferences {
@@ -137,16 +163,6 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(26px);
-}
-
-.save-preferences {
-    background: #28a745;
-    color: white;
-    margin-top: 20px;
-}
-
-.save-preferences:hover {
-    background: #218838;
 }
 
 @media (max-width: 768px) {
