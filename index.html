@@ -160,17 +160,23 @@
                     <img src="./images/Ental Logo PNG.png" alt="IDT Logo">
                 </a>
             </div>
-            <li class="language-switcher mobile">
-                <a href="index-it.html" class="language-btn" data-lang="it" title="Italian">
-                    <img src="https://flagcdn.com/w20/it.png" alt="Italian" class="flag-icon">
-                </a>
-                <a href="index.html" class="language-btn active" data-lang="en" title="English">
-                    <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
-                </a>
-                <a href="index-sq.html" class="language-btn" data-lang="sq" title="Albanian">
-                    <img src="https://flagcdn.com/w20/al.png" alt="Albanian" class="flag-icon">
-                </a>
-            </li>
+            <ul class="language-switcher mobile">
+                <li>
+                    <a href="index-it.html" class="language-btn" data-lang="it" title="Italian">
+                        <img src="https://flagcdn.com/w20/it.png" alt="Italian" class="flag-icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html" class="language-btn active" data-lang="en" title="English">
+                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="index-sq.html" class="language-btn" data-lang="sq" title="Albanian">
+                        <img src="https://flagcdn.com/w20/al.png" alt="Albanian" class="flag-icon">
+                    </a>
+                </li>
+            </ul>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
@@ -209,6 +215,11 @@
                 </div>
                 <a href="#contact" class="btn btn-primary">Book Now</a>
             </div>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </nav>
     </header>
 
@@ -458,48 +469,12 @@
     </section>
 
     <section id="testimonials">
-        <h2>Clients with <span class="highlight">Reason to Smile</span></h2>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p>"Excellent service and professional staff. My dental experience was comfortable and pain-free."</p>
-                <div class="patient-info">
-                    <h4>Luca</h4>
-                    <p>Dental Surgery</p>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p>"The best dental care I've ever received. The results exceeded my expectations."</p>
-                <div class="patient-info">
-                    <h4>Romeo</h4>
-                    <p>Complete Dental Implants</p>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p>"Professional and friendly staff. They made me feel comfortable throughout my treatment."</p>
-                <div class="patient-info">
-                    <h4>Beatrice</h4>
-                    <p>Aesthetic Dentistry</p>
+        <h2>What Our Patients Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <h3>Luca</h3>
+                    <p>Excellent service and professional staff...</p>
                 </div>
             </div>
         </div>
@@ -530,8 +505,12 @@
                     <a href="mailto:info@idt.al" class="contact-link">info@idt.al</a>
                 </div>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/people/Innovative-Dental-Of-Tirana/61556505400119/" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/innovative_dental_of_tirana/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/people/Innovative-Dental-Of-Tirana/61556505400119/" target="_blank" aria-label="Visit our Facebook page">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/innovative_dental_of_tirana/" target="_blank" aria-label="Visit our Instagram page">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
             <div class="contact-form">
@@ -540,22 +519,32 @@
                     <input type="text" placeholder="Your Name" required>
                     <input type="email" placeholder="Your Email" required>
                     <input type="tel" placeholder="Your Phone" required>
-                    <select required>
-                        <option value="">Select Service</option>
-                        <option value="general">General Dentistry</option>
-                        <option value="implants">Dental Implants</option>
-                        <option value="surgery">Dental Surgery</option>
-                        <option value="alignment">Teeth Alignment</option>
-                        <option value="braces">Dental Braces</option>
-                        <option value="prosthetics">Prosthetics</option>
-                    </select>
+                    <div class="form-group">
+                        <label for="service-select">Select Service</label>
+                        <select id="service-select" required>
+                            <option value="">Select a service</option>
+                            <option value="general">General Dentistry</option>
+                            <option value="implants">Dental Implants</option>
+                            <option value="surgery">Dental Surgery</option>
+                            <option value="alignment">Teeth Alignment</option>
+                        </select>
+                    </div>
                     <textarea placeholder="Your Message" required></textarea>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
             <h3>Location</h3>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.036024499173!2d19.803745499999998!3d41.32983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135031d661d0a923%3A0x1e797bb049d90d30!2sInnovative%20Dental%20Of%20Tirana!5e0!3m2!1sen!2s!4v1745940006091!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.036024499173!2d19.803745499999998!3d41.32983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135031d661d0a923%3A0x1e797bb049d90d30!2sInnovative%20Dental%20Of%20Tirana!5e0!3m2!1sen!2s!4v1745940006091!5m2!1sen!2s" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Innovative Dental Of Tirana Location Map">
+                </iframe>
             </div>
         </div>
 

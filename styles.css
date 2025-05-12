@@ -223,8 +223,8 @@ nav {
 }
 
 .btn-primary {
-    background-color: #1a8e9b;
-    color: #fff;
+    background-color: #0056b3;
+    color: #ffffff;
     padding: 0.6rem 1.2rem;
     border-radius: 30px;
     text-decoration: none;
@@ -1430,8 +1430,8 @@ footer {
 }
 
 .btn-primary {
-    background: #007bff;
-    color: #fff;
+    background: #0056b3;
+    color: #ffffff;
 }
 
 .btn-primary:hover {
@@ -1899,4 +1899,9 @@ h4 {
         margin: 20px auto;
         border-radius: 5px;
     }
+}
+
+/* Update any other low contrast elements */
+.text-muted {
+    color: #4a4a4a !important; /* Darker gray for better contrast */
 }
