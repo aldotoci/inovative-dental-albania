@@ -13,8 +13,8 @@ body {
 
 /* Top Bar Styles */
 .topBar {
-    background-color: #1a8e9b;
-    color: #fff;
+    background-color: #0056b3; /* Darker blue for better contrast */
+    color: #ffffff;
     padding: 0.3rem 0;
     font-size: 0.8rem;
     top: 0;
@@ -43,7 +43,7 @@ body {
 }
 
 .btIconWidgetIcon {
-    color: #fff;
+    color: #ffffff;
     font-size: 0.9rem;
 }
 
@@ -55,29 +55,50 @@ body {
 }
 
 .btIconWidgetTitle {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.75rem;
     white-space: nowrap;
+    color: #ffffff;
 }
 
 .btIconWidgetText {
     font-size: 0.7rem;
     white-space: nowrap;
+    color: #ffffff;
 }
 
 .bt_button_widget {
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: opacity 0.3s;
     font-size: 0.8rem;
 }
 
 .bt_button_widget:hover {
-    opacity: 0.8;
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.bt_bb_button_text {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Ensure phone number is clearly visible */
+.bt_button_widget .bt_bb_button_text {
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Add hover effect for better interaction */
+.btIconWidget:hover .btIconWidgetTitle,
+.btIconWidget:hover .btIconWidgetText {
+    opacity: 0.9;
 }
 
 @media (max-width: 768px) {
@@ -87,10 +108,6 @@ body {
     
     header {
         top: 0;
-    }
-    
-    #hero {
-        /* margin-top: 4rem; */
     }
     
     .topTools {
@@ -302,6 +319,20 @@ nav {
     background-color: #1a8e9b;
     margin: 6px auto;
     transition: all 0.3s ease;
+}
+
+/* Add visually hidden text for screen readers */
+.mobile-menu-btn::before {
+    content: "Menu";
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 @media (max-width: 768px) {
