@@ -5,6 +5,10 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" as="style">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     
+    <!-- Preload main CSS -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="consent-banner.css" as="style">
+    
     <!-- Critical CSS inline -->
     <style>
         /* Critical font-face declarations */
@@ -40,22 +44,15 @@
         }
     </style>
 
-    <!-- Defer non-critical CSS -->
-    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="consent-banner.css" media="print" onload="this.media='all'">
+    <!-- Load CSS immediately -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="consent-banner.css">
     
-    <!-- Defer Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <!-- Load Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Fallback for CSS if JavaScript is disabled -->
-    <noscript>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="consent-banner.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    </noscript>
-
-    <!-- Load remaining Google Fonts asynchronously -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" media="print" onload="this.media='all'">
+    <!-- Load remaining Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
     
     <!-- Initialize dataLayer and set consent defaults -->
     <script>
