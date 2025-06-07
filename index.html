@@ -1,6 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Critical CSS inline -->
+    <style>
+        /* Critical font-face declarations */
+        @font-face {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6Z1xlFQ.woff2) format('woff2');
+        }
+        
+        /* Critical styles for above-the-fold content */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .topBar {
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 0.3rem 0;
+        }
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="consent-banner.css" media="print" onload="this.media='all'">
+    
+    <!-- Defer Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Fallback for CSS if JavaScript is disabled -->
+    <noscript>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="consent-banner.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
+
+    <!-- Load remaining Google Fonts asynchronously -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" media="print" onload="this.media='all'">
+    
     <!-- Initialize dataLayer and set consent defaults -->
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -20,11 +76,11 @@
         // Load Google tag if consent was previously granted
         var gtagScript = document.createElement('script');
         gtagScript.async = true;
-        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-69M504H7QT';
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZT38WT9NP7';
         document.head.appendChild(gtagScript);
 
         gtag('js', new Date());
-        gtag('config', 'G-69M504H7QT', {
+        gtag('config', 'G-ZT38WT9NP7', {
             'anonymize_ip': true,
             'cookie_domain': 'auto',
             'cookie_flags': 'SameSite=None;Secure'
@@ -69,12 +125,6 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./images/Ental Logo PNG.png">
     <link rel="apple-touch-icon" href="./images/Ental Logo PNG.png">
-    
-    <!-- Existing CSS and Font Links -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="consent-banner.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Structured Data for Local Business -->
     <script type="application/ld+json">
@@ -160,23 +210,27 @@
                     <img src="./images/Ental Logo PNG.png" alt="IDT Logo">
                 </a>
             </div>
-            <ul class="language-switcher mobile">
-                <li>
+            <div class="nav-actions">
+                <div class="language-switcher">
                     <a href="index-it.html" class="language-btn" data-lang="it" title="Italian">
                         <img src="https://flagcdn.com/w20/it.png" alt="Italian" class="flag-icon">
                     </a>
-                </li>
-                <li>
                     <a href="index.html" class="language-btn active" data-lang="en" title="English">
                         <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
                     </a>
-                </li>
-                <li>
                     <a href="index-sq.html" class="language-btn" data-lang="sq" title="Albanian">
                         <img src="https://flagcdn.com/w20/al.png" alt="Albanian" class="flag-icon">
                     </a>
-                </li>
-            </ul>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links" aria-haspopup="true" type="button">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect y="6" width="28" height="3" rx="1.5" fill="#222"/>
+                        <rect y="13" width="28" height="3" rx="1.5" fill="#222"/>
+                        <rect y="20" width="28" height="3" rx="1.5" fill="#222"/>
+                    </svg>
+                    <span class="visually-hidden">Menu</span>
+                </button>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
@@ -184,64 +238,21 @@
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li class="language-switcher desktop">
-                    <a href="index-it.html" class="language-btn" data-lang="it" title="Italian">
-                        <img src="https://flagcdn.com/w20/it.png" alt="Italian" class="flag-icon">
-                    </a>
-                    <a href="index.html" class="language-btn active" data-lang="en" title="English">
-                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
-                    </a>
-                    <a href="index-sq.html" class="language-btn" data-lang="sq" title="Albanian">
-                        <img src="https://flagcdn.com/w20/al.png" alt="Albanian" class="flag-icon">
-                    </a>
-                </li>
             </ul>
             <div class="nav-right">
-                <div class="language-switcher mobile">
-                    <a href="index-it.html" class="language-btn" data-lang="it" title="Italian">
-                        <img src="https://flagcdn.com/w20/it.png" alt="Italian" class="flag-icon">
-                    </a>
-                    <a href="index.html" class="language-btn active" data-lang="en" title="English">
-                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
-                    </a>
-                    <a href="index-sq.html" class="language-btn" data-lang="sq" title="Albanian">
-                        <img src="https://flagcdn.com/w20/al.png" alt="Albanian" class="flag-icon">
-                    </a>
-                </div>
                 <div class="social-icons">
-                    <a href="https://wa.me/355692341136" 
-                       target="_blank" 
-                       class="social-icon" 
-                       aria-label="Contact us on WhatsApp">
+                    <a href="https://wa.me/355692341136" target="_blank" class="social-icon" aria-label="Contact us on WhatsApp">
                         <i class="fab fa-whatsapp" aria-hidden="true"></i>
                     </a>
-                    <a href="https://www.facebook.com/people/Innovative-Dental-Of-Tirana/61556505400119/" 
-                       target="_blank" 
-                       class="social-icon" 
-                       aria-label="Visit our Facebook page">
+                    <a href="https://www.facebook.com/people/Innovative-Dental-Of-Tirana/61556505400119/" target="_blank" class="social-icon" aria-label="Visit our Facebook page">
                         <i class="fab fa-facebook-f" aria-hidden="true"></i>
                     </a>
-                    <a href="https://www.instagram.com/innovative_dental_of_tirana/" 
-                       target="_blank" 
-                       class="social-icon" 
-                       aria-label="Follow us on Instagram">
+                    <a href="https://www.instagram.com/innovative_dental_of_tirana/" target="_blank" class="social-icon" aria-label="Follow us on Instagram">
                         <i class="fab fa-instagram" aria-hidden="true"></i>
                     </a>
                 </div>
                 <a href="#contact" class="btn btn-primary">Book Now</a>
             </div>
-            <button 
-                class="mobile-menu-btn" 
-                aria-label="Toggle navigation menu" 
-                aria-expanded="false" 
-                aria-controls="nav-links"
-                aria-haspopup="true"
-                type="button">
-                <span class="bar" aria-hidden="true"></span>
-                <span class="bar" aria-hidden="true"></span>
-                <span class="bar" aria-hidden="true"></span>
-                <span class="visually-hidden">Menu</span>
-            </button>
         </nav>
     </header>
 
@@ -537,13 +548,22 @@
             </div>
             <div class="contact-form">
                 <h3>Book Your Appointment</h3>
-                <form id="appointment-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="tel" placeholder="Your Phone" required>
+                <form id="appointment-form" action="https://formsubmit.co/info@idt.al" method="POST">
+                    <!-- Honeypot to prevent spam -->
+                    <input type="text" name="_honey" style="display:none">
+                    
+                    <!-- Disable Captcha -->
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <!-- Specify redirect after submission -->
+                    <input type="hidden" name="_next" value="https://idt.al/thank-you.html">
+                    
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="tel" name="phone" placeholder="Your Phone" required>
                     <div class="form-group">
                         <label for="service-select">Select Service</label>
-                        <select id="service-select" required>
+                        <select id="service-select" name="service" required>
                             <option value="">Select a service</option>
                             <option value="general">General Dentistry</option>
                             <option value="implants">Dental Implants</option>
@@ -551,7 +571,7 @@
                             <option value="alignment">Teeth Alignment</option>
                         </select>
                     </div>
-                    <textarea placeholder="Your Message" required></textarea>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
@@ -649,6 +669,11 @@
             </div>
             <button class="consent-btn save-preferences" onclick="savePreferences()">Save Preferences</button>
         </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/355692341136" class="contact-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <!-- Scripts -->

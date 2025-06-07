@@ -1,19 +1,33 @@
 // Mobile Navigation Toggle
+// Updated for new header structure
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Add mobile menu toggle functionality
-    const mobileMenuBtn = document.createElement('button');
-    mobileMenuBtn.className = 'mobile-menu-btn';
-    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-    
-    const nav = document.querySelector('nav');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    
-    nav.insertBefore(mobileMenuBtn, navLinks);
-    
-    mobileMenuBtn.addEventListener('click', function() {
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !isExpanded);
+
+    mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('active');
         navLinks.classList.toggle('active');
+        this.setAttribute('aria-expanded', this.classList.contains('active'));
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+            mobileMenuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // On resize, close menu if desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            mobileMenuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
     });
     
     // Smooth scrolling for navigation links
@@ -32,25 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    // Form submission handling
-    const contactForm = document.querySelector('.contact-form form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Here you would typically send the data to a server
-            console.log('Form submitted:', data);
-            
-            // Show success message
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
-        });
-    }
     
     // Add scroll reveal animations
     const revealElements = document.querySelectorAll('.service-card, .about-content, .testimonial-card');

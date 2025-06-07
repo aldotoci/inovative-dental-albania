@@ -1,25 +1,102 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-69M504H7QT"></script>
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Critical CSS inline -->
+    <style>
+        /* Critical font-face declarations */
+        @font-face {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6Z1xlFQ.woff2) format('woff2');
+        }
+        
+        /* Critical styles for above-the-fold content */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .topBar {
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 0.3rem 0;
+        }
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="consent-banner.css" media="print" onload="this.media='all'">
+    
+    <!-- Defer Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Fallback for CSS if JavaScript is disabled -->
+    <noscript>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="consent-banner.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
+
+    <!-- Load remaining Google Fonts asynchronously -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" media="print" onload="this.media='all'">
+    
+    <!-- Initialize dataLayer and set consent defaults -->
     <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-69M504H7QT', {
-        'consent_mode': 'denied'
+    function gtag() { dataLayer.push(arguments); }
+    
+    // Set default consent state
+    gtag('consent', 'default', {
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
     });
+
+    // Check if consent was previously granted
+    if (localStorage.getItem('consent-given') === 'true') {
+        // Load Google tag if consent was previously granted
+        var gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZT38WT9NP7';
+        document.head.appendChild(gtagScript);
+
+        gtag('js', new Date());
+        gtag('config', 'G-ZT38WT9NP7', {
+            'anonymize_ip': true,
+            'cookie_domain': 'auto',
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+    }
     </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovative Dental Di Tirana (IDT) - Cura Dentale di Eccellenza in Albania</title>
+    <title>Innovative Dental Of Tirana (IDT) - Cura Dentale di Prima Classe in Albania</title>
     
     <!-- Primary Meta Tags -->
-    <meta name="title" content="Innovative Dental Di Tirana (IDT) - Cura Dentale di Eccellenza in Albania">
-    <meta name="description" content="Sperimenta cure dentistiche di livello mondiale presso Innovative Dental Di Tirana. Offriamo servizi dentali completi inclusi impianti, ortodonzia e odontoiatria estetica in Albania. Prenota il tuo appuntamento oggi!">
-    <meta name="keywords" content="clinica dentale Albania, impianti dentali Tirana, ortodonzia Albania, odontoiatria estetica, turismo dentale Albania, IDT dentale, Innovative Dental Di Tirana, cure dentali Albania">
-    <meta name="author" content="Innovative Dental Di Tirana">
+    <meta name="title" content="Innovative Dental Of Tirana (IDT) - Cura Dentale di Prima Classe in Albania">
+    <meta name="description" content="Sperimenta cure dentali di livello mondiale presso Innovative Dental Of Tirana. Offriamo servizi dentali completi inclusi impianti, ortodonzia e odontoiatria estetica in Albania. Prenota il tuo appuntamento oggi!">
+    <meta name="keywords" content="clinica dentale Albania, impianti dentali Tirana, ortodonzia Albania, odontoiatria estetica, turismo dentale Albania, IDT dentale, Innovative Dental Of Tirana, cure dentali Albania">
+    <meta name="author" content="Innovative Dental Of Tirana">
     <meta name="robots" content="index, follow">
     
     <!-- Canonical URL -->
@@ -33,37 +110,31 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://idt.al/index-it.html">
-    <meta property="og:title" content="Innovative Dental Di Tirana (IDT) - Cura Dentale di Eccellenza in Albania">
-    <meta property="og:description" content="Sperimenta cure dentistiche di livello mondiale presso Innovative Dental Di Tirana. Offriamo servizi dentali completi inclusi impianti, ortodonzia e odontoiatria estetica in Albania.">
+    <meta property="og:url" content="https://idt.al/">
+    <meta property="og:title" content="Innovative Dental Of Tirana (IDT) - Cura Dentale di Prima Classe in Albania">
+    <meta property="og:description" content="Sperimenta cure dentali di livello mondiale presso Innovative Dental Of Tirana. Offriamo servizi dentali completi inclusi impianti, ortodonzia e odontoiatria estetica in Albania.">
     <meta property="og:image" content="https://idt.al/images/Ental Logo PNG.png">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://idt.al/index-it.html">
-    <meta property="twitter:title" content="Innovative Dental Di Tirana (IDT) - Cura Dentale di Eccellenza in Albania">
-    <meta property="twitter:description" content="Sperimenta cure dentistiche di livello mondiale presso Innovative Dental Di Tirana. Offriamo servizi dentali completi inclusi impianti, ortodonzia e odontoiatria estetica in Albania.">
+    <meta property="twitter:url" content="https://idt.al/">
+    <meta property="twitter:title" content="Innovative Dental Of Tirana (IDT) - Cura Dentale di Prima Classe in Albania">
+    <meta property="twitter:description" content="Sperimenta cure dentali di livello mondiale presso Innovative Dental Of Tirana. Offriamo servizi dentali completi inclusi impianti, ortodonzia e odontoiatria estetica in Albania.">
     <meta property="twitter:image" content="https://idt.al/images/Ental Logo PNG.png">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./images/Ental Logo PNG.png">
     <link rel="apple-touch-icon" href="./images/Ental Logo PNG.png">
     
-    <!-- Existing CSS and Font Links -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="consent-banner.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <!-- Structured Data for Local Business -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Dentist",
-        "name": "Innovative Dental Di Tirana",
+        "name": "Innovative Dental Of Tirana",
         "alternateName": "IDT",
         "image": "https://idt.al/images/Ental Logo PNG.png",
-        "url": "https://idt.al/index-it.html",
+        "url": "https://idt.al",
         "telephone": "+355692341136",
         "address": {
             "@type": "PostalAddress",
@@ -108,26 +179,26 @@
                 <div class="topTools btTopToolsRight">
                     <div class="btIconWidget btWidgetWithText">
                         <div class="btIconWidgetIcon">
-                            <span data-ico-fontawesome="" class="bt_bb_icon_holder"><i class="fas fa-clock"></i></span>
+                            <span data-ico-fontawesome="" class="bt_bb_icon_holder"><i class="fas fa-clock"></i></span>
                         </div>
                         <div class="btIconWidgetContent">
-                            <span class="btIconWidgetTitle">Lunedì - Venerdì</span>
+                            <span class="btIconWidgetTitle">Lunedì a Venerdì</span>
                             <span class="btIconWidgetText">11:00 - 21:00</span>
                         </div>
                     </div>
                     <div class="btIconWidget btWidgetWithText">
                         <div class="btIconWidgetIcon">
-                            <span data-ico-fontawesome5solid="" class="bt_bb_icon_holder"><i class="fas fa-map-marker-alt"></i></span>
+                            <span data-ico-fontawesome5solid="" class="bt_bb_icon_holder"><i class="fas fa-map-marker-alt"></i></span>
                         </div>
                         <div class="btIconWidgetContent">
                             <span class="btIconWidgetTitle">Indirizzo</span>
-                            <span class="btIconWidgetText">Mosaic of Tirana, Rruga Sandër Prosi, Tiranë 1057</span>
+                            <span class="btIconWidgetText">Mosaic of Tirana, Rruga Sandër Prosi, Tirana 1057</span>
                         </div>
                     </div>
                     <div class="btBox widget_bt_button_widget btIconWidget btIconWidgetLeft">
                         <a href="tel:+355692341136" class="bt_button_widget bt_bb_button_link bt_button_widget_alternate" title="+355 69 234 1136">
                             <span class="bt_bb_button_text">+355 69 234 1136</span>
-                            <span data-ico-fontawesome5solid="" class="bt_bb_icon_holder"><i class="fas fa-phone"></i></span>
+                            <span data-ico-fontawesome5solid="" class="bt_bb_icon_holder"><i class="fas fa-phone"></i></span>
                         </a>
                     </div>
                 </div>
@@ -139,17 +210,27 @@
                     <img src="./images/Ental Logo PNG.png" alt="IDT Logo">
                 </a>
             </div>
-            <li class="language-switcher mobile">
-                <a href="index-it.html" class="language-btn active" data-lang="it" title="Italiano">
-                    <img src="https://flagcdn.com/w20/it.png" alt="Italiano" class="flag-icon">
-                </a>
-                <a href="index.html" class="language-btn" data-lang="en" title="Inglese">
-                    <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
-                </a>
-                <a href="index-sq.html" class="language-btn" data-lang="sq" title="Albanese">
-                    <img src="https://flagcdn.com/w20/al.png" alt="Albanian" class="flag-icon">
-                </a>
-            </li>
+            <div class="nav-actions">
+                <div class="language-switcher">
+                    <a href="index-it.html" class="language-btn active" data-lang="it" title="Italiano">
+                        <img src="https://flagcdn.com/w20/it.png" alt="Italiano" class="flag-icon">
+                    </a>
+                    <a href="index.html" class="language-btn" data-lang="en" title="English">
+                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
+                    </a>
+                    <a href="index-sq.html" class="language-btn" data-lang="sq" title="Albanian">
+                        <img src="https://flagcdn.com/w20/al.png" alt="Albanian" class="flag-icon">
+                    </a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links" aria-haspopup="true" type="button">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect y="6" width="28" height="3" rx="1.5" fill="#222"/>
+                        <rect y="13" width="28" height="3" rx="1.5" fill="#222"/>
+                        <rect y="20" width="28" height="3" rx="1.5" fill="#222"/>
+                    </svg>
+                    <span class="visually-hidden">Menu</span>
+                </button>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Servizi</a></li>
@@ -157,34 +238,18 @@
                 <li><a href="#gallery">Galleria</a></li>
                 <li><a href="#testimonials">Testimonianze</a></li>
                 <li><a href="#contact">Contatti</a></li>
-                <li class="language-switcher desktop">
-                    <a href="index-it.html" class="language-btn active" data-lang="it" title="Italiano">
-                        <img src="https://flagcdn.com/w20/it.png" alt="Italiano" class="flag-icon">
-                    </a>
-                    <a href="index.html" class="language-btn" data-lang="en" title="Inglese">
-                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
-                    </a>
-                    <a href="index-sq.html" class="language-btn" data-lang="sq" title="Albanese">
-                        <img src="https://flagcdn.com/w20/al.png" alt="Albanian" class="flag-icon">
-                    </a>
-                </li>
             </ul>
             <div class="nav-right">
-                <div class="language-switcher mobile">
-                    <a href="index-it.html" class="language-btn active" data-lang="it" title="Italiano">
-                        <img src="https://flagcdn.com/w20/it.png" alt="Italiano" class="flag-icon">
-                    </a>
-                    <a href="index.html" class="language-btn" data-lang="en" title="Inglese">
-                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
-                    </a>
-                    <a href="index-sq.html" class="language-btn" data-lang="sq" title="Albanese">
-                        <img src="https://flagcdn.com/w20/al.png" alt="Albanian" class="flag-icon">
-                    </a>
-                </div>
                 <div class="social-icons">
-                    <a href="https://wa.me/355692341136" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/people/Innovative-Dental-Of-Tirana/61556505400119/" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/innovative_dental_of_tirana/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/355692341136" target="_blank" class="social-icon" aria-label="Contattaci su WhatsApp">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.facebook.com/people/Innovative-Dental-Of-Tirana/61556505400119/" target="_blank" class="social-icon" aria-label="Visita la nostra pagina Facebook">
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.instagram.com/innovative_dental_of_tirana/" target="_blank" class="social-icon" aria-label="Seguici su Instagram">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <a href="#contact" class="btn btn-primary">Prenota Ora</a>
             </div>
@@ -195,29 +260,29 @@
         <div class="hero-carousel">
             <div class="carousel-container">
                 <div class="carousel-slide">
-                    <img src="./images/ambient-images/first-one.jpg" alt="Interni della Clinica Dentale">
+                    <img src="./images/ambient-images/first-one.webp" alt="Interno della Clinica Dentale">
                 </div>
                 <div class="carousel-slide">
-                    <img src="./images/ambient-images/first.jpg" alt="Interni della Clinica Dentale">
+                    <img src="./images/ambient-images/first.webp" alt="Interno della Clinica Dentale">
                 </div>
                 <div class="carousel-slide">
-                    <img src="./images/ambient-images/second.jpg" alt="Interni della Clinica Dentale">
+                    <img src="./images/ambient-images/second.webp" alt="Interno della Clinica Dentale">
                 </div>
                 <div class="carousel-slide">
-                    <img src="./images/ambient-images/thierd.jpg" alt="Interni della Clinica Dentale">
+                    <img src="./images/ambient-images/thierd.webp" alt="Interno della Clinica Dentale">
                 </div>
                 <div class="carousel-slide">
-                    <img src="./images/ambient-images/forth.jpg" alt="Interni della Clinica Dentale">
+                    <img src="./images/ambient-images/forth.webp" alt="Interno della Clinica Dentale">
                 </div>
                 <div class="carousel-slide">
-                    <img src="./images/ambient-images/fifth.jpg" alt="Interni della Clinica Dentale">
+                    <img src="./images/ambient-images/fifth.webp" alt="Interno della Clinica Dentale">
                 </div>
             </div>
             <div class="carousel-dots"></div>
         </div>
         <div class="hero-content">
-            <h1>Creiamo <span class="highlight">Sorrisi Più Luminosi</span></h1>
-            <p>Esperienza di cure dentistiche di livello mondiale nel cuore dell'Albania</p>
+            <h1>Creiamo <span class="highlight">Sorrisi più Brillanti</span></h1>
+            <p>Sperimenta cure dentali di livello mondiale nel cuore dell'Albania</p>
             <a href="#contact" class="btn btn-primary">Contattaci Ora</a>
         </div>
     </section>
@@ -228,32 +293,32 @@
             <div class="service-card">
                 <i class="fas fa-tooth"></i>
                 <h3>Odontoiatria Generale</h3>
-                <p>Cure dentistiche complete per tutta la famiglia</p>
+                <p>Cure dentali complete per tutta la famiglia</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-teeth"></i>
                 <h3>Impianti Dentali</h3>
-                <p>Soluzioni avanzate di impianti dentali</p>
+                <p>Soluzioni avanzate per impianti dentali</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-syringe"></i>
                 <h3>Chirurgia Dentale</h3>
-                <p>Procedure chirurgiche specializzate</p>
+                <p>Procedure chirurgiche professionali</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-teeth-open"></i>
-                <h3>Allineamento Dentale</h3>
-                <p>Trattamenti personalizzati di allineamento</p>
+                <h3>Allineamento dei Denti</h3>
+                <p>Trattamenti personalizzati per l'allineamento</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-braces"></i>
-                <h3>Apparecchi Ortodontici</h3>
+                <h3>Apparecchi Dentali</h3>
                 <p>Soluzioni ortodontiche moderne</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-teeth"></i>
-                <h3>Protesi Dentarie</h3>
-                <p>Protesi dentarie di alta qualità</p>
+                <h3>Protesi</h3>
+                <p>Protesi dentali di alta qualità</p>
             </div>
         </div>
     </section>
@@ -266,22 +331,22 @@
                     <div class="benefit-card">
                         <i class="fas fa-euro-sign"></i>
                         <h4>Risparmio sui Costi</h4>
-                        <p>Risparmia fino al 70% rispetto ai trattamenti dentali nell'Europa occidentale</p>
+                        <p>Risparmia fino al 70% rispetto ai trattamenti dentali in Europa occidentale</p>
                     </div>
                     <div class="benefit-card">
                         <i class="fas fa-plane"></i>
                         <h4>Facile Accesso</h4>
-                        <p>Voli comodi dalle principali città europee verso Tirana</p>
+                        <p>Voli convenienti dalle principali città europee a Tirana</p>
                     </div>
                     <div class="benefit-card">
                         <i class="fas fa-medal"></i>
-                        <h4>Cure di Qualità</h4>
-                        <p>Trattamenti dentali di standard europeo con attrezzature moderne</p>
+                        <h4>Qualità delle Cure</h4>
+                        <p>Trattamenti dentali con standard europei e attrezzature moderne</p>
                     </div>
                     <div class="benefit-card">
                         <i class="fas fa-umbrella-beach"></i>
                         <h4>Pacchetto Vacanza</h4>
-                        <p>Combina il trattamento dentale con una splendida vacanza in Albania</p>
+                        <p>Combina il trattamento dentale con una bella vacanza in Albania</p>
                     </div>
                 </div>
             </div>
@@ -292,56 +357,56 @@
         <h2>La Nostra Galleria</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="./images/ambient-images/first-one.jpg" alt="Interni della Clinica">
+                <img src="./images/ambient-images/first-one.webp" alt="Interno della Clinica Dentale">
                 <div class="gallery-overlay">
                     <div class="gallery-info">
-                        <h3>Interni Moderni della Clinica</h3>
-                        <p>Strutture dentali all'avanguardia</p>
+                        <h3>Interno Moderno della Clinica</h3>
+                        <p>Attrezzature dentali avanzate</p>
                     </div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="./images/ambient-images/second.jpg" alt="Sala Trattamenti">
+                <img src="./images/ambient-images/second.webp" alt="Sala di Trattamento">
                 <div class="gallery-overlay">
                     <div class="gallery-info">
-                        <h3>Sala Trattamenti</h3>
-                        <p>Confortevole e ben attrezzata</p>
+                        <h3>Sala di Trattamento</h3>
+                        <p>Comoda e ben attrezzata</p>
                     </div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="./images/ambient-images/equipment.jpg" alt="Attrezzature Dentali">
+                <img src="./images/ambient-images/equipment.webp" alt="Attrezzature Dentali">
                 <div class="gallery-overlay">
                     <div class="gallery-info">
                         <h3>Attrezzature Avanzate</h3>
-                        <p>Tecnologia dentale all'avanguardia</p>
+                        <p>Ultima tecnologia dentale</p>
                     </div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="./images/ambient-images/first.jpg" alt="Area di Attesa">
+                <img src="./images/ambient-images/first.webp" alt="Sala d'Attesa">
                 <div class="gallery-overlay">
                     <div class="gallery-info">
-                        <h3>Area di Attesa</h3>
-                        <p>Spazio accogliente per la reception</p>
+                        <h3>Sala d'Attesa</h3>
+                        <p>Spazio accogliente in attesa</p>
                     </div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="./images/ambient-images/thierd.jpg" alt="Consulenza Dentale">
+                <img src="./images/ambient-images/thierd.webp" alt="Consulenza Dentale">
                 <div class="gallery-overlay">
                     <div class="gallery-info">
-                        <h3>Sala Consulenze</h3>
-                        <p>Spazio per consulenze professionali</p>
+                        <h3>Sala Consulenza</h3>
+                        <p>Spazio professionale per consulenze</p>
                     </div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="./images/ambient-images/fifth.jpg" alt="Trattamento Dentale">
+                <img src="./images/ambient-images/fifth.webp" alt="Area di Trattamento">
                 <div class="gallery-overlay">
                     <div class="gallery-info">
-                        <h3>Area Trattamenti</h3>
-                        <p>Strutture di trattamento moderne</p>
+                        <h3>Area di Trattamento</h3>
+                        <p>Attrezzature moderne per il trattamento</p>
                     </div>
                 </div>
             </div>
@@ -354,19 +419,19 @@
                 <h2>Informazioni di Viaggio</h2>
                 <div class="info-grid">
                     <div class="info-card">
-                        <h3>Come Arrivare</h3>
+                        <h3>Come Raggiungerci</h3>
                         <ul>
                             <li><i class="fas fa-plane"></i> Aeroporto Internazionale di Tirana (TIA) - 20 minuti dalla clinica</li>
-                            <li><i class="fas fa-taxi"></i> Servizio transfer dall'aeroporto disponibile</li>
+                            <li><i class="fas fa-taxi"></i> Servizio di transfer dall'aeroporto disponibile</li>
                             <li><i class="fas fa-bus"></i> Opzioni di trasporto pubblico dal centro città</li>
                         </ul>
                     </div>
                     <div class="info-card">
-                        <h3>Alloggio</h3>
+                        <h3>Sistemazione</h3>
                         <ul>
-                            <li><i class="fas fa-hotel"></i> Hotel convenzionati con tariffe speciali</li>
+                            <li><i class="fas fa-hotel"></i> Hotel partner con tariffe speciali</li>
                             <li><i class="fas fa-home"></i> Appartamenti vicino alla clinica</li>
-                            <li><i class="fas fa-concierge-bell"></i> Pacchetti tutto incluso disponibili</li>
+                            <li><i class="fas fa-concierge-bell"></i> Pacchetti all-inclusive disponibili</li>
                         </ul>
                     </div>
                     <div class="info-card">
@@ -383,14 +448,14 @@
     </section>
 
     <section id="treatment-packages">
-        <h2>Pacchetti Turismo Dentale</h2>
+        <h2>Pacchetti di Turismo Dentale</h2>
         <div class="packages-grid">
             <div class="package-card">
                 <h3>Pacchetto Base</h3>
                 <ul>
-                    <li><i class="fas fa-check"></i> Consulenza e Radiografie</li>
+                    <li><i class="fas fa-check"></i> Consulenza & Radiografie</li>
                     <li><i class="fas fa-check"></i> 2 notti di alloggio</li>
-                    <li><i class="fas fa-check"></i> Transfer aeroportuali</li>
+                    <li><i class="fas fa-check"></i> Transfer dall'aeroporto</li>
                     <li><i class="fas fa-check"></i> Trattamento dentale base</li>
                 </ul>
                 <a href="#contact" class="btn btn-secondary">Prenota Ora</a>
@@ -400,7 +465,7 @@
                 <ul>
                     <li><i class="fas fa-check"></i> Trattamento dentale completo</li>
                     <li><i class="fas fa-check"></i> 5 notti in alloggio di lusso</li>
-                    <li><i class="fas fa-check"></i> Transfer privati</li>
+                    <li><i class="fas fa-check"></i> Transfer privato</li>
                     <li><i class="fas fa-check"></i> Tour della città incluso</li>
                 </ul>
                 <a href="#contact" class="btn btn-primary">Prenota Ora</a>
@@ -408,10 +473,10 @@
             <div class="package-card">
                 <h3>Pacchetto Famiglia</h3>
                 <ul>
-                    <li><i class="fas fa-check"></i> Trattamenti dentali per la famiglia</li>
-                    <li><i class="fas fa-check"></i> 7 notti in alloggio familiare</li>
+                    <li><i class="fas fa-check"></i> Trattamenti dentali familiari</li>
+                    <li><i class="fas fa-check"></i> 7 notti di alloggio familiare</li>
                     <li><i class="fas fa-check"></i> Attività per famiglie</li>
-                    <li><i class="fas fa-check"></i> Sconti di gruppo</li>
+                    <li><i class="fas fa-check"></i> Sconti per gruppi</li>
                 </ul>
                 <a href="#contact" class="btn btn-secondary">Prenota Ora</a>
             </div>
@@ -422,7 +487,7 @@
         <div class="about-content">
             <div class="about-text">
                 <h2>Il Dentista</h2>
-                <p>Innovative Dental Di Tirana è uno studio dentistico, situato nel cuore di Tirana, Albania, che offre eccellenti servizi odontoiatrici per tutta la famiglia. La nostra priorità è farti sentire a tuo agio in un ambiente sicuro e accogliente.</p>
+                <p>Innovative Dental Of Tirana è una clinica dentale, fondata nel cuore di Tirana, Albania, che offre servizi dentali eccellenti per tutta la famiglia. La nostra priorità è farti sentire a tuo agio in un ambiente sicuro e accogliente.</p>
                 <ul class="features-list">
                     <li><i class="fas fa-check"></i> Attrezzature Moderne</li>
                     <li><i class="fas fa-check"></i> Dentisti Esperti</li>
@@ -431,54 +496,18 @@
                 </ul>
             </div>
             <div class="about-image">
-                <img src="./images/ambient-images/fifth.jpg" alt="Clinica Innovative Dental Di Tirana">
+                <img src="./images/ambient-images/fifth.webp" alt="Clinica Innovative Dental Of Tirana">
             </div>
         </div>
     </section>
 
     <section id="testimonials">
-        <h2>Clienti con <span class="highlight">Motivo per Sorridere</span></h2>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p>"Servizio eccellente e personale professionale. La mia esperienza dentale è stata confortevole e senza dolore."</p>
-                <div class="patient-info">
-                    <h4>Luca</h4>
-                    <p>Chirurgia Dentale</p>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p>"Le migliori cure dentali che abbia mai ricevuto. I risultati hanno superato le mie aspettative."</p>
-                <div class="patient-info">
-                    <h4>Romeo</h4>
-                    <p>Impianti Dentali Completi</p>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p>"Personale professionale e cordiale. Mi hanno fatto sentire a mio agio durante tutto il trattamento."</p>
-                <div class="patient-info">
-                    <h4>Beatrice</h4>
-                    <p>Odontoiatria Estetica</p>
+        <h2>Cosa Dicono i Nostri Pazienti</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <h3>Luca</h3>
+                    <p>Servizio eccellente e personale professionale...</p>
                 </div>
             </div>
         </div>
@@ -490,7 +519,7 @@
                 <h2>Contattaci</h2>
                 <div class="info-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <p>Mosaic of Tirana, Rruga Sandër Prosi, Tiranë</p>
+                    <p>Rr. "Dritan Hoxha", Tirana, Albania</p>
                 </div>
                 <div class="info-item">
                     <i class="fas fa-phone"></i>
@@ -509,32 +538,55 @@
                     <a href="mailto:info@idt.al" class="contact-link">info@idt.al</a>
                 </div>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/people/Innovative-Dental-Of-Tirana/61556505400119/" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/innovative_dental_of_tirana/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/people/Innovative-Dental-Of-Tirana/61556505400119/" target="_blank" aria-label="Visita la nostra pagina Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/innovative_dental_of_tirana/" target="_blank" aria-label="Visita la nostra pagina Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
             <div class="contact-form">
                 <h3>Prenota il Tuo Appuntamento</h3>
-                <form id="appointment-form">
-                    <input type="text" placeholder="Il Tuo Nome" required>
-                    <input type="email" placeholder="La Tua Email" required>
-                    <input type="tel" placeholder="Il Tuo Telefono" required>
-                    <select required>
-                        <option value="">Seleziona Servizio</option>
-                        <option value="general">Odontoiatria Generale</option>
-                        <option value="implants">Impianti Dentali</option>
-                        <option value="surgery">Chirurgia Dentale</option>
-                        <option value="alignment">Allineamento Dentale</option>
-                        <option value="braces">Apparecchi Ortodontici</option>
-                        <option value="prosthetics">Protesi Dentarie</option>
-                    </select>
-                    <textarea placeholder="Il Tuo Messaggio" required></textarea>
+                <form id="appointment-form" action="https://formsubmit.co/info@idt.al" method="POST">
+                    <!-- Honeypot to prevent spam -->
+                    <input type="text" name="_honey" style="display:none">
+                    
+                    <!-- Disable Captcha -->
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <!-- Specify redirect after submission -->
+                    <input type="hidden" name="_next" value="https://idt.al/thank-you.html">
+                    
+                    <input type="text" name="name" placeholder="Il Tuo Nome" required>
+                    <input type="email" name="email" placeholder="La Tua Email" required>
+                    <input type="tel" name="phone" placeholder="Il Tuo Telefono" required>
+                    <div class="form-group">
+                        <label for="service-select">Seleziona il Servizio</label>
+                        <select id="service-select" name="service" required>
+                            <option value="">Seleziona un servizio</option>
+                            <option value="general">Odontoiatria Generale</option>
+                            <option value="implants">Impianti Dentali</option>
+                            <option value="surgery">Chirurgia Dentale</option>
+                            <option value="alignment">Allineamento dei Denti</option>
+                        </select>
+                    </div>
+                    <textarea name="message" placeholder="Il Tuo Messaggio" required></textarea>
                     <button type="submit" class="btn btn-primary">Invia</button>
                 </form>
             </div>
-            <h3>Posizione</h3>
+            <h3>Ubicazione</h3>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.036024499173!2d19.803745499999998!3d41.32983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135031d661d0a923%3A0x1e797bb049d90d30!2sInnovative%20Dental%20Of%20Tirana!5e0!3m2!1sen!2s!4v1745940006091!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.036024499173!2d19.803745499999998!3d41.32983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135031d661d0a923%3A0x1e797bb049d90d30!2sInnovative%20Dental%20Of%20Tirana!5e0!3m2!1sen!2s!4v1745940006091!5m2!1sen!2s" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ubicazione di Innovative Dental Of Tirana">
+                </iframe>
             </div>
         </div>
     </section>
@@ -553,22 +605,22 @@
             <div class="footer-section">
                 <h3>Orari di Apertura</h3>
                 <ul>
-                    <li>Lunedì - Venerdì: 9:00 - 18:00</li>
-                    <li>Sabato: 9:00 - 14:00</li>
+                    <li>Lunedì - Venerdì: 11:00 - 21:00</li>
+                    <li>Sabato: 09:00 - 14:00</li>
                     <li>Domenica: Chiuso</li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Informazioni di Contatto</h3>
                 <ul>
-                    <li>Mosaic of Tirana, Rruga Sandër Prosi, Tiranë 1057</li>
+                    <li>Mosaic of Tirana, Rruga Sandër Prosi, Tirana 1057</li>
                     <li>+355 69 234 1136</li>
                     <li>info@idt.al</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Innovative Dental Di Tirana. Tutti i diritti riservati.</p>
+            <p>&copy; 2025 Innovative Dental Of Tirana. Tutti i diritti riservati.</p>
         </div>
     </footer>
 
@@ -576,7 +628,7 @@
     <div id="consent-banner" class="consent-banner">
         <div class="consent-content">
             <div class="consent-text">
-                <p>Utilizziamo i cookie per migliorare la tua esperienza di navigazione, fornire contenuti personalizzati e analizzare il nostro traffico. Cliccando su "Accetta Tutto", acconsenti al nostro utilizzo dei cookie. Leggi la nostra <a href="/privacy-policy" target="_blank">Informativa sulla Privacy</a> per maggiori informazioni.</p>
+                <p>Utilizziamo i cookie per migliorare la tua esperienza di navigazione, fornire contenuti personalizzati e analizzare il nostro traffico. Cliccando "Accetta Tutto", acconsenti al nostro utilizzo dei cookie. Leggi la nostra <a href="/privacy-policy" target="_blank">Informativa sulla Privacy</a> per maggiori informazioni.</p>
             </div>
             <div class="consent-buttons">
                 <button class="consent-btn accept-all" onclick="acceptAll()">Accetta Tutto</button>
@@ -592,7 +644,7 @@
                         <span class="slider"></span>
                     </span>
                 </label>
-                <p>Necessari per il corretto funzionamento del sito web. Non possono essere disattivati.</p>
+                <p>Necessari per il corretto funzionamento del sito. Non possono essere disattivati.</p>
             </div>
             <div class="preference-item">
                 <label>
@@ -602,7 +654,7 @@
                         <span class="slider"></span>
                     </span>
                 </label>
-                <p>Ci aiutano a capire come i visitatori interagiscono con il nostro sito web.</p>
+                <p>Ci aiutano a capire come i visitatori interagiscono con il nostro sito.</p>
             </div>
             <div class="preference-item">
                 <label>
@@ -612,10 +664,15 @@
                         <span class="slider"></span>
                     </span>
                 </label>
-                <p>Utilizzati per tracciare i visitatori tra i siti web per scopi di marketing.</p>
+                <p>Utilizzati per tracciare i visitatori attraverso i siti per scopi di marketing.</p>
             </div>
             <button class="consent-btn save-preferences" onclick="savePreferences()">Salva Preferenze</button>
         </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/355692341136" class="contact-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <!-- Scripts -->
